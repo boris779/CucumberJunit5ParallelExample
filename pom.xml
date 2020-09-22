@@ -10,9 +10,10 @@
     <packaging>jar</packaging>
 
     <properties>
-            <kotlin.version>1.4.10</kotlin.version>
-         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kotlin.version>1.4.10</kotlin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cucumber.version>6.7.0</cucumber.version>
+        <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
 
     </properties>
 
@@ -40,6 +41,20 @@
             <artifactId>cucumber-java8</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
@@ -52,11 +67,13 @@
         </testResources>
 
 
-
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <configuration>
+                    <jvmTarget>1.8</jvmTarget>
+                </configuration>
                 <version>${kotlin.version}</version>
                 <executions>
                     <execution>
@@ -72,17 +89,17 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
-                        <!--configuration>
-                            <sourceDirs>
-                                <source>src/test/kotlin</source>
-                            </sourceDirs>
-                        </configuration-->
                     </execution>
                 </executions>
-                <configuration>
-                    <jvmTarget>1.8</jvmTarget>
-                </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.surefire</groupId>
+                <artifactId>maven-surefire-common</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -109,11 +126,7 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.surefire</groupId>
-                <artifactId>maven-surefire-common</artifactId>
-                <version>2.22.2</version>
-            </plugin>
+
         </plugins>
     </build>
 
