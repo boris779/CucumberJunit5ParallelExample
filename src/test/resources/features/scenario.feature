@@ -13,7 +13,7 @@ Feature: Scenarios feature file
   Scenario: Scenario Number Three (B)
     Given Step from 'Scenario 3' in 'scenarios' feature file
 
-    @tag-b
+  @tag-b
   Scenario: Scenario Number Four (B)
     Given Step from 'Scenario 4' in 'scenarios' feature file
 
