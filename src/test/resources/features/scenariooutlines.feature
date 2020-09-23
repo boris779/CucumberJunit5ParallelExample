@@ -1,7 +1,7 @@
 Feature: Scenario Outlines feature file
 
   @outlines @all
-  Scenario Outline: <scen_out_row_num>
+  Scenario Outline: <scen_out_row_num> Scenario Outline
     Given Step from '<scen_out_row_num>' in 'scenario-outlines' feature file
 
     Examples:
